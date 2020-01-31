@@ -1,0 +1,70 @@
+import React from "react";
+import App from "next/app";
+import Head from "next/head";
+import { createClient } from "contentful";
+import { ThemeProvider } from "styled-components";
+import NoSsr from "@material-ui/core/NoSsr";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import theme from "../src/theme";
+import Router from "next/router";
+import urlParse from "url-parse";
+
+const contentfulClient = createClient({
+  space: "k1r1qvt9nkmn",
+  accessToken: "afS0r2tsGFGBYjJ6W4iKwEdSCzc6AGnL0X17K-XrGm8"
+});
+
+const handleRouteChange = url => {
+  // console.log("App is changing to: ", url);
+  // console.log(urlParse(url));
+
+  contentfulClient
+    .getEntries({
+      content_type: "page",
+      "fields.pageUrl.sys.contentType.sys.id": "urlInternal",
+      "fields.pageUrl.fields.url": url,
+      include: 10
+    })
+    .then(function(entry) {
+      // logs the entry metadata
+      // console.log(entry);
+      // logs the field with ID title
+      // console.log(entry.fields.productName);
+    });
+};
+
+Router.events.on("routeChangeStart", handleRouteChange);
+
+export default class MyApp extends App {
+  componentDidMount() {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector("#jss-server-side");
+
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }
+
+  render() {
+    const { Component, pageProps } = this.props;
+
+    return (
+      <React.Fragment>
+        <Head>
+          <title>My page</title>
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width"
+          />
+        </Head>
+        <NoSsr>
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </NoSsr>
+      </React.Fragment>
+    );
+  }
+}
