@@ -2,7 +2,7 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import FullWidth from "../layouts/fullWidth";
 import Typography from "@material-ui/core/Typography";
-import Box from "../components/box";
+import Box from "../components/Box";
 
 const Index = props => {
   return (
