@@ -22,7 +22,6 @@ const Product = props => {
   const value = price ? price.value.centAmount : "";
 
   const addToCart = () => {
-    console.log("adding to cart");
     dispatch({ type: "ADD_TO_CART", product });
   };
 
