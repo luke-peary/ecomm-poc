@@ -1,5 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 import rootReducer from "./reducers";
 
@@ -25,15 +27,32 @@ const flatProduct = product => {
 
 const cleanedProducts = products.map(p => flatProduct(p));
 
+const persistConfig = {
+  key: "root",
+  storage
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const initialState = {
   products: cleanedProducts,
   cart: {}
 };
 
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware())
-);
+export default () => {
+  let store = createStore(
+    persistedReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware())
+  );
+  let persistor = persistStore(store);
+  return { store, persistor };
+};
 
-export default store;
+// const store = createStore(
+//   rootReducer,
+//   initialState,
+//   composeWithDevTools(applyMiddleware())
+// );
+
+// export default store;
