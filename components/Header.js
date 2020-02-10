@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Typography, Grid, IconButton } from "@material-ui/core";
-import Link from "../src/Link";
+import Link from "./Link";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { styled } from "@material-ui/core/styles";
 import Box from "./Box";
 
-const Logo = styled(Link)({
+const Logo = styled("div")({
   color: "white",
   fontWeight: "bold",
   fontSize: "32px",
@@ -14,10 +14,8 @@ const Logo = styled(Link)({
   }
 });
 
-const Cart = styled("button")({
-  color: "white",
-  backgroundColor: "transparent",
-  border: 0
+const Cart = styled("div")({
+  color: "white"
 });
 
 const Nav = styled("ul")({
@@ -30,30 +28,28 @@ const NavItem = styled("li")({
   display: "inline-block"
 });
 
-const handleClick = () => {
-  console.log("clicked");
-};
-
 const Header = () => {
   return (
     <Box py={2} px={4} bgcolor="neutral.800">
       <Container fixed>
         <Grid container direction="row" alignItems="center">
           <Grid item xs={2}>
-            <Logo href="/">ORSUM</Logo>
+            <Link href="/">
+              <Logo>ORSUM</Logo>
+            </Link>
           </Grid>
           <Grid item xs={8}>
             <Nav>
               <NavItem>
-                <Link href="/listing" color="inherit">
-                  PRODUCTS
-                </Link>
+                <Link href="/listing">PRODUCTS</Link>
               </NavItem>
             </Nav>
           </Grid>
           <Grid item xs={2}>
-            <Cart onClick={handleClick}>
-              <ShoppingCartOutlinedIcon />
+            <Cart>
+              <Link href="/checkout/cart">
+                <ShoppingCartOutlinedIcon />
+              </Link>
             </Cart>
           </Grid>
         </Grid>

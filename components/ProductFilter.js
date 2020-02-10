@@ -32,7 +32,6 @@ const ProductFilter = () => {
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
-    console.log(state);
   };
 
   const { red, blue, green } = state;

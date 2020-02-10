@@ -1,27 +1,36 @@
-import React from "react";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Box from "../../components/Box";
-import Button from "@material-ui/core/Button";
-import Link from "../../src/Link";
+import { connect } from "react-redux";
+import { Container, Typography, Button } from "@material-ui/core";
+import FullWidth from "../../layouts/fullWidth";
+import Link from "next/link";
 
-export default function Cart() {
+const Cart = ({ cart }) => {
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
+    <FullWidth>
+      <Container maxWidth="sm">
         <Typography variant="h4" component="h1" gutterBottom>
           Cart
         </Typography>
-        <Button
-          variant="contained"
-          color="primary.main"
-          component={Link}
-          naked
-          href="/checkout/shipping"
-        >
-          Go to shipping page
+        <ul>
+          {Object.values(cart).map(item => (
+            <li key={item.id}>
+              <Typography variant="h4" component="span" gutterBottom>
+                {item.name}
+              </Typography>
+            </li>
+          ))}
+        </ul>
+        <Button variant="contained">
+          <Link href="/checkout/shipping">
+            <a>Go to shipping page</a>
+          </Link>
         </Button>
-      </Box>
-    </Container>
+      </Container>
+    </FullWidth>
   );
-}
+};
+
+const mapStateToProps = state => ({
+  cart: state.cart
+});
+
+export default connect(mapStateToProps)(Cart);

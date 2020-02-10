@@ -1,8 +1,10 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-import Link from "../src/Link";
+import { useDispatch } from "react-redux";
+import { Typography, Button } from "@material-ui/core";
+import Link from "./Link";
 import styled from "styled-components";
 import Box from "./Box";
+import { toPrice } from "../helpers/functions";
 
 const Image = styled("img")`
   width: 100%;
@@ -12,32 +14,28 @@ const Wrapper = styled(Box)`
   overflow: hidden;
 `;
 
-const ProductName = styled(Link)`
-  font-weight: bold;
-  text-decoration: none;
-  color: inherit;
-`;
+const Product = ({ product }) => {
+  const dispatch = useDispatch();
+  const { id, name, images, price } = product;
 
-const Product = ({
-  product: {
-    id,
-    masterData: { current }
-  }
-}) => {
-  const name = current.name;
-  const image = current.masterVariant.images[0].url;
-  const value = current.masterVariant.price
-    ? current.masterVariant.price.value.centAmount
-    : "";
+  const image = images[0].url;
+  const value = price ? price.value.centAmount : "";
+
+  const addToCart = () => {
+    dispatch({ type: "ADD_TO_CART", product });
+  };
 
   return (
     <Wrapper bgcolor="white" boxShadow="sm" borderRadius="borderRadius.md">
-      <Link href={`/product/${id}`}>
+      <Link href="/product/[id]" as={`/product/${id}`}>
         <Image src={image} />
       </Link>
       <Box textAlign="center">
-        <ProductName href={`/product/${id}`}>{name}</ProductName>
-        <Typography>{`$${(value / 100).toFixed(2)}`}</Typography>
+        <Link href="/product/[id]" as={`/product/${id}`}>
+          {name}
+        </Link>
+        <Typography>{toPrice(value)}</Typography>
+        <Button onClick={addToCart}>Add to cart</Button>
       </Box>
     </Wrapper>
   );
