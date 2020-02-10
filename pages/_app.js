@@ -1,6 +1,8 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 import { createClient } from "contentful";
 import { ThemeProvider } from "styled-components";
 import NoSsr from "@material-ui/core/NoSsr";
@@ -15,9 +17,6 @@ const contentfulClient = createClient({
 });
 
 const handleRouteChange = url => {
-  // console.log("App is changing to: ", url);
-  // console.log(urlParse(url));
-
   contentfulClient
     .getEntries({
       content_type: "page",
@@ -35,7 +34,7 @@ const handleRouteChange = url => {
 
 Router.events.on("routeChangeStart", handleRouteChange);
 
-export default class MyApp extends App {
+class MyApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -59,12 +58,16 @@ export default class MyApp extends App {
         </Head>
         <NoSsr>
           <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Component {...pageProps} />
+            <Provider store={store}>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              <Component {...pageProps} />
+            </Provider>
           </ThemeProvider>
         </NoSsr>
       </React.Fragment>
     );
   }
 }
+
+export default MyApp;

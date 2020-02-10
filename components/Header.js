@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Typography, Grid, IconButton } from "@material-ui/core";
-import Link from "../src/Link";
+import Link from "next/link";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { styled } from "@material-ui/core/styles";
 import Box from "./Box";
 
-const Logo = styled(Link)({
+const Logo = styled("div")({
   color: "white",
   fontWeight: "bold",
   fontSize: "32px",
@@ -40,20 +40,28 @@ const Header = () => {
       <Container fixed>
         <Grid container direction="row" alignItems="center">
           <Grid item xs={2}>
-            <Logo href="/">ORSUM</Logo>
+            <Link href="/">
+              <a>
+                <Logo>ORSUM</Logo>
+              </a>
+            </Link>
           </Grid>
           <Grid item xs={8}>
             <Nav>
               <NavItem>
-                <Link href="/listing" color="inherit">
-                  PRODUCTS
+                <Link href="/listing">
+                  <a>PRODUCTS</a>
                 </Link>
               </NavItem>
             </Nav>
           </Grid>
           <Grid item xs={2}>
             <Cart onClick={handleClick}>
-              <ShoppingCartOutlinedIcon />
+              <Link href="/checkout/cart">
+                <a>
+                  <ShoppingCartOutlinedIcon />
+                </a>
+              </Link>
             </Cart>
           </Grid>
         </Grid>
