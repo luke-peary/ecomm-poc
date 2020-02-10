@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Typography, Grid, IconButton } from "@material-ui/core";
-import Link from "next/link";
+import Link from "./Link";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { styled } from "@material-ui/core/styles";
 import Box from "./Box";
@@ -14,10 +14,8 @@ const Logo = styled("div")({
   }
 });
 
-const Cart = styled("button")({
-  color: "white",
-  backgroundColor: "transparent",
-  border: 0
+const Cart = styled("div")({
+  color: "white"
 });
 
 const Nav = styled("ul")({
@@ -30,10 +28,6 @@ const NavItem = styled("li")({
   display: "inline-block"
 });
 
-const handleClick = () => {
-  console.log("clicked");
-};
-
 const Header = () => {
   return (
     <Box py={2} px={4} bgcolor="neutral.800">
@@ -41,26 +35,20 @@ const Header = () => {
         <Grid container direction="row" alignItems="center">
           <Grid item xs={2}>
             <Link href="/">
-              <a>
-                <Logo>ORSUM</Logo>
-              </a>
+              <Logo>ORSUM</Logo>
             </Link>
           </Grid>
           <Grid item xs={8}>
             <Nav>
               <NavItem>
-                <Link href="/listing">
-                  <a>PRODUCTS</a>
-                </Link>
+                <Link href="/listing">PRODUCTS</Link>
               </NavItem>
             </Nav>
           </Grid>
           <Grid item xs={2}>
-            <Cart onClick={handleClick}>
+            <Cart>
               <Link href="/checkout/cart">
-                <a>
-                  <ShoppingCartOutlinedIcon />
-                </a>
+                <ShoppingCartOutlinedIcon />
               </Link>
             </Cart>
           </Grid>

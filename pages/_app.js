@@ -25,10 +25,7 @@ const handleRouteChange = url => {
       include: 10
     })
     .then(function(entry) {
-      // logs the entry metadata
       // console.log(entry);
-      // logs the field with ID title
-      // console.log(entry.fields.productName);
     });
 };
 

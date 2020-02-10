@@ -14,7 +14,6 @@ const Cart = ({ cart }) => {
         <ul>
           {Object.values(cart).map(item => (
             <li key={item.id}>
-              {console.log(item)}
               <Typography variant="h4" component="span" gutterBottom>
                 {item.name}
               </Typography>
