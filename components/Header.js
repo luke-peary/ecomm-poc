@@ -4,6 +4,7 @@ import Link from "./Link";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { styled } from "@material-ui/core/styles";
 import Box from "./Box";
+import { borderRight } from "@material-ui/system";
 
 const Logo = styled("div")({
   color: "white",
@@ -15,7 +16,8 @@ const Logo = styled("div")({
 });
 
 const Cart = styled("div")({
-  color: "white"
+  color: "white",
+  textAlign: "right"
 });
 
 const Nav = styled("ul")({

@@ -38,6 +38,7 @@ class MyApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
+    // persistor.purge();
 
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);

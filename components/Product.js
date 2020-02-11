@@ -16,10 +16,9 @@ const Wrapper = styled(Box)`
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
-  const { id, name, images, price } = product;
+  const { id, name, images, value } = product;
 
   const image = images[0].url;
-  const value = price ? price.value.centAmount : "";
 
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", product });

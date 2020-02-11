@@ -16,10 +16,10 @@ const Product = props => {
   );
 
   if (!product) return null;
-  const { id, name, images, price } = product;
+  const { id, name, images, value } = product;
 
   const image = images[0].url;
-  const value = price ? price.value.centAmount : "";
+  console.log(product);
 
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", product });

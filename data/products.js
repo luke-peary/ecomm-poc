@@ -9,6 +9,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/084711_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/084711_1_small.jpg"
             }
           ],
           price: null
@@ -26,6 +30,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072366_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072366_1_small.jpg"
             }
           ],
           price: {
@@ -47,6 +55,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085573_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085573_1_small.jpg"
             }
           ],
           price: {
@@ -67,7 +79,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081092_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081092_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081092_1_small.jpg"
             }
           ],
           price: null
@@ -85,6 +101,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/084073_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/084073_1_small.jpg"
             }
           ],
           price: null
@@ -101,7 +121,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072357_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072357_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072357_1_small.jpg"
             }
           ],
           price: {
@@ -122,7 +146,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/073173_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/073173_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/073173_1_small.jpg"
             }
           ],
           price: {
@@ -144,6 +172,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072964_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/072964_1_small.jpg"
             }
           ],
           price: {
@@ -164,7 +196,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/082026_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/082026_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/082026_1_small.jpg"
             }
           ],
           price: {
@@ -185,7 +221,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081500_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081500_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081500_1_small.jpg"
             }
           ],
           price: {
@@ -206,7 +246,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085953_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085953_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085953_1_small.jpg"
             }
           ],
           price: {
@@ -227,7 +271,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/078765_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/078765_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/078765_1_small.jpg"
             }
           ],
           price: {
@@ -248,7 +296,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081544_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081544_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081544_1_small.jpg"
             }
           ],
           price: {
@@ -269,7 +321,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/078886_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/078886_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/078886_1_small.jpg"
             }
           ],
           price: {
@@ -291,6 +347,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080195_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080195_1_small.jpg"
             }
           ],
           price: {
@@ -312,6 +372,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079077_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079077_1_small.jpg"
             }
           ],
           price: {
@@ -332,7 +396,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081219_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081219_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081219_1_small.jpg"
             }
           ],
           price: {
@@ -353,7 +421,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080527_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080527_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080527_1_small.jpg"
             }
           ],
           price: {
@@ -375,6 +447,10 @@ const products = [
             {
               url:
                 "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079543_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079543_1_small.jpg"
             }
           ],
           price: {
@@ -395,7 +471,11 @@ const products = [
           images: [
             {
               url:
-                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/082341_1_medium.jpg"
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/082341_1_large.jpg"
+            },
+            {
+              url:
+                "https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/082341_1_small.jpg"
             }
           ],
           price: {

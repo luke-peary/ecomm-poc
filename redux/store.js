@@ -17,10 +17,12 @@ const flatProduct = product => {
       }
     }
   } = product;
+  const value = price ? price.value.centAmount : 0;
+
   return {
     id,
     name,
-    price,
+    value,
     images
   };
 };
@@ -48,11 +50,3 @@ export default () => {
   let persistor = persistStore(store);
   return { store, persistor };
 };
-
-// const store = createStore(
-//   rootReducer,
-//   initialState,
-//   composeWithDevTools(applyMiddleware())
-// );
-
-// export default store;
