@@ -71,7 +71,7 @@ const CartList = ({ items }) => {
         <CartListItem key={item.id}>
           <ItemImage>
             <Link href="/product/[id]" as={`/product/${item.id}`}>
-              <Image src={item.images[0].url} />
+              <Image src={item.image} />
             </Link>
           </ItemImage>
           <ItemName>
@@ -81,7 +81,7 @@ const CartList = ({ items }) => {
           </ItemName>
           <ItemPrice>
             <Typography variant="h6" component="span">
-              {toPrice(item.value)}
+              {toPrice(item.price)}
             </Typography>
           </ItemPrice>
           <ItemQty>
@@ -92,13 +92,13 @@ const CartList = ({ items }) => {
           <ItemControls>
             <Remove
               onClick={() => removeFromCart(item.id)}
-              style={{ "margin-right": "24px" }}
+              style={{ marginRight: "24px" }}
             />
             <Add onClick={() => addToCart(item)} />
           </ItemControls>
           <ItemTotal>
             <Typography variant="h6" component="span">
-              {toPrice(item.value * item.qty)}
+              {toPrice(item.price * item.qty)}
             </Typography>
           </ItemTotal>
         </CartListItem>

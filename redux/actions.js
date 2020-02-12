@@ -1,3 +1,5 @@
+import ProductAPI from "../services/ProductAPI";
+
 // Cart
 
 export const addToCart = product => ({
@@ -16,9 +18,28 @@ export const removeFromCart = productId => ({
 
 // Products
 
-export const getProductById = productId => ({
-  type: "GET_PRODUCT_BY_ID",
-  payload: {
-    id: productId
-  }
+export function getProducts() {
+  return dispatch => {
+    dispatch(getProductsBegin());
+    return ProductAPI.getProducts()
+      .then(res => {
+        dispatch(getProductsSuccess(res.products));
+        return res.products;
+      })
+      .catch(error => dispatch(getProductsFailure(error)));
+  };
+}
+
+export const getProductsBegin = () => ({
+  type: "GET_PRODUCTS_BEGIN"
+});
+
+export const getProductsSuccess = products => ({
+  type: "GET_PRODUCTS_SUCCESS",
+  payload: { products }
+});
+
+export const getProductsFailure = error => ({
+  type: "GET_PRODUCTS_FAILURE",
+  payload: { error }
 });

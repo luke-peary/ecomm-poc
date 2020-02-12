@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Grid } from "@material-ui/core";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import Product from "./Product";
+import { getProducts } from "../redux/actions";
 
 const GridItem = styled(Grid)`
   margin-bottom: 32px;
@@ -24,8 +26,10 @@ const ProductGrid = props => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  products: state.products
+const mapStateToProps = state => ({
+  products: state.products.items,
+  loading: state.products.loading,
+  error: state.products.error
 });
 
 export default connect(mapStateToProps)(ProductGrid);

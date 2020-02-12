@@ -16,9 +16,7 @@ const Wrapper = styled(Box)`
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
-  const { id, name, images, value } = product;
-
-  const image = images[0].url;
+  const { id, name, image, price } = product;
 
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", product });
@@ -33,7 +31,7 @@ const Product = ({ product }) => {
         <Link href="/product/[id]" as={`/product/${id}`}>
           {name}
         </Link>
-        <Typography>{toPrice(value)}</Typography>
+        <Typography>{toPrice(price)}</Typography>
         <Button onClick={addToCart}>Add to cart</Button>
       </Box>
     </Wrapper>
