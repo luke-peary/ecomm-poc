@@ -7,19 +7,6 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 
 import rootReducer from "./reducers";
 
-// import products from "../data/products";
-
-// const products = ProductAPI.getProducts().then(res => {
-//   console.log(res);
-// });
-
-// const product = {
-//   id,
-//   name,
-//   image,
-//   price
-// }
-
 const persistConfig = {
   key: "root",
   storage
@@ -39,6 +26,8 @@ export default () => {
     compose(applyMiddleware(thunk), composeWithDevTools(applyMiddleware()))
   );
   let persistor = persistStore(store);
+
+  // persistor.purge();
 
   return { store, persistor };
 };

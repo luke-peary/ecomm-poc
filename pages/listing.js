@@ -4,7 +4,6 @@ import ProductFilter from "../components/ProductFilter";
 import ProductGrid from "../components/ProductGrid";
 import Heading from "../components/Heading";
 
-
 const Listing = props => {
   return (
     <FullWidth>
@@ -15,7 +14,7 @@ const Listing = props => {
           </Grid>
           <Grid item xs={12} md={9}>
             <Heading variant="h2" as="h2">
-              TOPS
+              All products
             </Heading>
             <ProductGrid />
           </Grid>

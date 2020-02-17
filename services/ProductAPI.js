@@ -1,7 +1,6 @@
 import GenericAPI from "./GenericAPI";
 
 const endpoint = "http://www.flexycommerce.com/bff";
-const headers = {};
 
 class ProductAPI extends GenericAPI {
   async getProduct(productId) {

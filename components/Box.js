@@ -8,6 +8,7 @@ import {
 } from "@material-ui/system";
 
 const Box = styled.div`
+  overflow: hidden;
   ${palette}
   ${spacing}
   ${typography}

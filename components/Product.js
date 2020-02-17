@@ -10,10 +10,6 @@ const Image = styled("img")`
   width: 100%;
 `;
 
-const Wrapper = styled(Box)`
-  overflow: hidden;
-`;
-
 const Product = ({ product }) => {
   const dispatch = useDispatch();
   const { id, name, image, price } = product;
@@ -23,7 +19,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <Wrapper bgcolor="white" boxShadow="sm" borderRadius="borderRadius.md">
+    <Box bgcolor="white" boxShadow="sm" borderRadius="borderRadius.md">
       <Link href="/product/[id]" as={`/product/${id}`}>
         <Image src={image} />
       </Link>
@@ -34,7 +30,7 @@ const Product = ({ product }) => {
         <Typography>{toPrice(price)}</Typography>
         <Button onClick={addToCart}>Add to cart</Button>
       </Box>
-    </Wrapper>
+    </Box>
   );
 };
 

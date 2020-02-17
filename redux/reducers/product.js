@@ -2,7 +2,7 @@ const initialState = {
   loading: false,
   product: {},
   error: null
-}
+};
 
 function product(state = initialState, action) {
   switch (action.type) {
@@ -16,7 +16,7 @@ function product(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        product: action.payload
+        product: action.payload.product
       };
     case "GET_PRODUCT_FAILURE":
       return {

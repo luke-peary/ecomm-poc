@@ -1,28 +1,28 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
-import Container from "@material-ui/core/Container";
-import FullWidth from "../../layouts/fullWidth";
-import Typography from "@material-ui/core/Typography";
-import Box from "../../components/Box";
-import Button from "@material-ui/core/Button";
-import { toPrice } from "../../helpers/functions";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import ProductFull from "../../components/ProductFull";
+import { Container, Grid, CircularProgress } from "@material-ui/core";
+import styled from "styled-components";
+import FullWidth from "../../layouts/fullWidth";
+import ProductInfo from "../../components/ProductInfo";
+import Box from "../../components/Box";
+import { fetchProduct } from "../../redux/actions";
+
+const Image = styled("img")`
+  width: 100%;
+`;
 
 const ProductPage = props => {
   const router = useRouter();
-  const dispatch = useDispatch();
-  /*
-  const product = props.products.find(
-    p => p.id === (router && router.query.id)
-  );
+  const { product, error, loading, dispatch } = props;
 
+  useEffect(() => {
+    dispatch(fetchProduct(router.query.id));
+  }, []);
+
+  if (loading) return <CircularProgress />;
   if (!product) return null;
-  const { id, name, images, value } = product;
 
-  const image = images[0].url;
-  console.log(product);
-  */
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", product });
   };
@@ -34,12 +34,25 @@ const ProductPage = props => {
   return (
     <FullWidth>
       <Container fixed>
-        <ProductFull productId={router.query.id} />
+        <Grid container spacing={5}>
+          <Grid item xs={12} md={5}>
+            <Box bgcolor="white" boxShadow="md" borderRadius="borderRadius.md">
+              <Image src={product.image} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={7}>
+            <ProductInfo product={product} />
+          </Grid>
+        </Grid>
       </Container>
     </FullWidth>
   );
 };
 
-export default ProductPage;
+const mapStateToProps = state => ({
+  product: state.product.product,
+  loading: state.product.loading,
+  error: state.product.error
+});
 
-
+export default connect(mapStateToProps)(ProductPage);

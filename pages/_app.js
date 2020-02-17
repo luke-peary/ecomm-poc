@@ -10,7 +10,6 @@ import NoSsr from "@material-ui/core/NoSsr";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import Router from "next/router";
-import urlParse from "url-parse";
 
 const { persistor, store } = configureStore();
 

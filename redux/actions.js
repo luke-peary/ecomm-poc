@@ -1,6 +1,5 @@
 import ProductAPI from "../services/ProductAPI";
 
-
 // Cart
 
 export const addToCart = product => ({
@@ -28,7 +27,7 @@ export function fetchProducts() {
         return res.products;
       })
       .catch(error => {
-        dispatch(getProductsFailure(error))
+        dispatch(getProductsFailure(error));
       });
   };
 }
@@ -47,7 +46,6 @@ export const getProductsFailure = error => ({
   payload: { error }
 });
 
-
 // Product
 
 export function fetchProduct(productId) {
@@ -59,8 +57,8 @@ export function fetchProduct(productId) {
         return res;
       })
       .catch(error => {
-        console.log(`There was an error: ${error}`)
-        dispatch(getProductFailure(error))
+        console.log(`There was an error: ${error}`);
+        dispatch(getProductFailure(error));
       });
   };
 }
