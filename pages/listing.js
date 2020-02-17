@@ -1,36 +1,9 @@
 import { Container, Grid } from "@material-ui/core";
 import FullWidth from "../layouts/fullWidth";
 import ProductFilter from "../components/ProductFilter";
-import { withApollo } from "../lib/apollo";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import ProductGrid from "../components/ProductGrid";
 import Heading from "../components/Heading";
 
-const GET_PRODUCTS = gql`
-  {
-    products {
-      results {
-        id
-        masterData {
-          current {
-            name(locale: "en")
-            masterVariant {
-              images {
-                url
-              }
-              price(currency: "USD") {
-                value {
-                  centAmount
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 const Listing = props => {
   return (

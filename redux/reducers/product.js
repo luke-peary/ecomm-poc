@@ -1,33 +1,33 @@
 const initialState = {
   loading: false,
-  items: [],
+  product: {},
   error: null
 }
 
-function products(state = initialState, action) {
+function product(state = initialState, action) {
   switch (action.type) {
-    case "GET_PRODUCTS_BEGIN":
+    case "GET_PRODUCT_BEGIN":
       return {
         ...state,
         loading: true,
         error: null
       };
-    case "GET_PRODUCTS_SUCCESS":
+    case "GET_PRODUCT_SUCCESS":
       return {
         ...state,
         loading: false,
-        items: action.payload.products
+        product: action.payload
       };
-    case "GET_PRODUCTS_FAILURE":
+    case "GET_PRODUCT_FAILURE":
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        items: []
+        product: {}
       };
     default:
       return state;
   }
 }
 
-export default products;
+export default product;

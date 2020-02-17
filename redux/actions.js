@@ -1,5 +1,6 @@
 import ProductAPI from "../services/ProductAPI";
 
+
 // Cart
 
 export const addToCart = product => ({
@@ -18,15 +19,17 @@ export const removeFromCart = productId => ({
 
 // Products
 
-export function getProducts() {
+export function fetchProducts() {
   return dispatch => {
     dispatch(getProductsBegin());
-    return ProductAPI.getProducts()
+    ProductAPI.getProducts()
       .then(res => {
         dispatch(getProductsSuccess(res.products));
         return res.products;
       })
-      .catch(error => dispatch(getProductsFailure(error)));
+      .catch(error => {
+        dispatch(getProductsFailure(error))
+      });
   };
 }
 
@@ -41,5 +44,37 @@ export const getProductsSuccess = products => ({
 
 export const getProductsFailure = error => ({
   type: "GET_PRODUCTS_FAILURE",
+  payload: { error }
+});
+
+
+// Product
+
+export function fetchProduct(productId) {
+  return dispatch => {
+    dispatch(getProductBegin());
+    ProductAPI.getProduct(productId)
+      .then(res => {
+        dispatch(getProductSuccess(res));
+        return res;
+      })
+      .catch(error => {
+        console.log(`There was an error: ${error}`)
+        dispatch(getProductFailure(error))
+      });
+  };
+}
+
+export const getProductBegin = () => ({
+  type: "GET_PRODUCT_BEGIN"
+});
+
+export const getProductSuccess = product => ({
+  type: "GET_PRODUCT_SUCCESS",
+  payload: { product }
+});
+
+export const getProductFailure = error => ({
+  type: "GET_PRODUCT_FAILURE",
   payload: { error }
 });

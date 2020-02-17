@@ -1,23 +1,15 @@
-// import getConfig from 'next/config';
+import GenericAPI from "./GenericAPI";
 
-// const { publicRuntimeConfig } = getConfig();
-// const { host, consumerId, apiKey } = publicRuntimeConfig.gateway;
-
-const endpoint = "https://35.247.189.41";
+const endpoint = "http://www.flexycommerce.com/bff";
 const headers = {};
 
-class ProductAPI {
+class ProductAPI extends GenericAPI {
   async getProduct(productId) {
-    return this.get(`/product?productId=${productId}/`);
+    return this.get(`${endpoint}/product?productId=${productId}`);
   }
 
-  async getProducts() {
-    return await (
-      await fetch(`${endpoint}/bff/getProducts`, {
-        method: "GET",
-        rejectUnauthorized: false
-      })
-    ).json();
+  getProducts() {
+    return this.get(`${endpoint}/getProducts`);
   }
 }
 

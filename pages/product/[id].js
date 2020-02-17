@@ -7,10 +7,12 @@ import Button from "@material-ui/core/Button";
 import { toPrice } from "../../helpers/functions";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import ProductFull from "../../components/ProductFull";
 
-const Product = props => {
+const ProductPage = props => {
   const router = useRouter();
   const dispatch = useDispatch();
+  /*
   const product = props.products.find(
     p => p.id === (router && router.query.id)
   );
@@ -20,7 +22,7 @@ const Product = props => {
 
   const image = images[0].url;
   console.log(product);
-
+  */
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", product });
   };
@@ -32,27 +34,12 @@ const Product = props => {
   return (
     <FullWidth>
       <Container fixed>
-        <Box my={4}>
-          <Typography variant="h1" component="h1" gutterBottom>
-            {name}
-          </Typography>
-          <Typography variant="h3" component="h3" gutterBottom>
-            {toPrice(value)}
-          </Typography>
-          <Button variant="contained" onClick={addToCart}>
-            Add to Cart
-          </Button>
-          <Button variant="contained" onClick={removeFromCart}>
-            Remove this from Cart
-          </Button>
-        </Box>
+        <ProductFull productId={router.query.id} />
       </Container>
     </FullWidth>
   );
 };
 
-const mapStateToProps = state => ({
-  products: state.products
-});
+export default ProductPage;
 
-export default connect(mapStateToProps)(Product);
+
