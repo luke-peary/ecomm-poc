@@ -4,7 +4,6 @@ import App from "next/app";
 import Head from "next/head";
 import { Provider } from "react-redux";
 import configureStore from "../redux/store";
-import { createClient } from "contentful";
 import { ThemeProvider } from "styled-components";
 import NoSsr from "@material-ui/core/NoSsr";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,31 +12,10 @@ import Router from "next/router";
 
 const { persistor, store } = configureStore();
 
-const contentfulClient = createClient({
-  space: "k1r1qvt9nkmn",
-  accessToken: "afS0r2tsGFGBYjJ6W4iKwEdSCzc6AGnL0X17K-XrGm8"
-});
-
-const handleRouteChange = url => {
-  contentfulClient
-    .getEntries({
-      content_type: "page",
-      "fields.pageUrl.sys.contentType.sys.id": "urlInternal",
-      "fields.pageUrl.fields.url": url,
-      include: 10
-    })
-    .then(function(entry) {
-      // console.log(entry);
-    });
-};
-
-Router.events.on("routeChangeStart", handleRouteChange);
-
 class MyApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
-    // persistor.purge();
 
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);

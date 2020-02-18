@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import { typography } from "@material-ui/system";
+import { typography, color } from "@material-ui/system";
 
 const Heading = styled.span`
   ${typography}
+  ${color}
   ${props => {
     switch (props.variant) {
       case "h1":
