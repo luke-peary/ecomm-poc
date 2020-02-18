@@ -1,20 +1,43 @@
-import Container from "@material-ui/core/Container";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import FullWidth from "../layouts/fullWidth";
-import Typography from "@material-ui/core/Typography";
-import Box from "../components/Box";
+import Components from "../components";
+import { fetchPage } from "../redux/actions/contentful";
+
+const createSection = section => {
+  const contentType = section.sys.contentType.sys.id;
+  const fields = section.fields;
+
+  const CreatedComponent = Components[contentType].component;
+  const componentFactory = Components[contentType].factory;
+  const props = componentFactory(fields);
+
+  return <CreatedComponent {...props} />;
+};
 
 const Index = props => {
+  const { dispatch, page } = props;
+
+  useEffect(() => {
+    dispatch(fetchPage("/"));
+  }, []);
+
+  if (!page) return null;
+  const { sections } = page.fields;
+
   return (
     <FullWidth>
-      <Container maxWidth="sm">
-        <Box my={4}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            Next.js example
-          </Typography>
-        </Box>
-      </Container>
+      {sections.map(section => {
+        return createSection(section);
+      })}
     </FullWidth>
   );
 };
 
-export default Index;
+const mapStateToProps = state => ({
+  page: state.contentful.page,
+  loading: state.contentful.loading,
+  error: state.contentful.error
+});
+
+export default connect(mapStateToProps)(Index);

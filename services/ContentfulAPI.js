@@ -8,9 +8,14 @@ class ContentfulServices {
     accessToken: "afS0r2tsGFGBYjJ6W4iKwEdSCzc6AGnL0X17K-XrGm8"
   });
 
-  async getPage(searchOptions) {
+  async getPage(url) {
     const data = await this.contentfulClient
-      .getEntries(searchOptions)
+      .getEntries({
+        content_type: "page",
+        "fields.pageUrl.sys.contentType.sys.id": "urlInternal",
+        "fields.pageUrl.fields.url": url,
+        include: 10
+      })
       .catch(err => ({ err, statusCode: err.response.status }));
 
     return data.total ? data : { statusCode: 404 };
