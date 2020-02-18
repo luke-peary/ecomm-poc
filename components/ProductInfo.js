@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Typography, Button } from "@material-ui/core";
 import Heading from "./Heading";
+import Button from "./Button";
+
 import { toPrice } from "../helpers/functions";
 
 const ProductInfo = ({ product }) => {
@@ -16,7 +17,9 @@ const ProductInfo = ({ product }) => {
     <>
       <Heading as="h1">{name}</Heading>
       <Heading as="h3">{toPrice(price)}</Heading>
-      <Button onClick={addToCart}>Add to cart</Button>
+      <Button onClick={addToCart} variant="primary">
+        Add to cart
+      </Button>
     </>
   );
 };

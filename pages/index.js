@@ -12,7 +12,7 @@ const createSection = section => {
   const componentFactory = Components[contentType].factory;
   const props = componentFactory(fields);
 
-  return <CreatedComponent {...props} />;
+  return <CreatedComponent key={section.sys.id} {...props} />;
 };
 
 const Index = props => {

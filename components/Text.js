@@ -24,8 +24,8 @@ const Text = styled.span`
         `;
       default:
         return css`
-          font-size: 15px;
-          line-height: 20px;
+          font-size: 17px;
+          line-height: 24px;
         `;
     }
   }};

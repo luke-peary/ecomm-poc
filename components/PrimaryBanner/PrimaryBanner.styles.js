@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Picture from "../Picture";
+import Button from "../Button";
 import Box from "../Box";
 
 export const OuterWrapper = styled(Box)`
@@ -18,9 +18,7 @@ export const ContentWrapper = styled(Box)`
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 100%;
-  margin-top: 16px;
-  width: auto;
+  margin-top: 24px;
 `;
 
 export const ImageWrapper = styled.div`

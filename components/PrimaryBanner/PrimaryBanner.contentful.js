@@ -6,7 +6,7 @@ export const FPrimaryBanner = data => {
   return {
     title,
     body,
-    linkUrl: linkUrl && linkUrl,
+    linkUrl: linkUrl && linkUrl.fields.url,
     image: FPicture(image)
   };
 };
