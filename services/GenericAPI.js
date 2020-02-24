@@ -1,42 +1,55 @@
-import fetch from 'isomorphic-unfetch';
-import getConfig from 'next/config';
-import merge from 'lodash/merge';
-import queryString from 'query-string';
+import fetch from "isomorphic-unfetch";
+import getConfig from "next/config";
+import merge from "lodash/merge";
+import queryString from "query-string";
 
 const DEFAULT_ERROR = {
-  errorCode: 'DEFAULT',
-  errorDescription: 'Something went wrong'
+  errorCode: "DEFAULT",
+  errorDescription: "Something went wrong"
 };
 
 class GenericAPI {
-
-  constructor(option = {}) {
-  }
+  constructor(option = {}) {}
 
   async get(endpoint, payload, options) {
-    const queryParams = queryString.stringify(payload || {}).replace(/^(.)/, '?$1');
-    return this.genericFetch(`${endpoint}${queryParams}`, merge({ method: 'GET' }, options));
+    const queryParams = queryString
+      .stringify(payload || {})
+      .replace(/^(.)/, "?$1");
+    return this.genericFetch(
+      `${endpoint}${queryParams}`,
+      merge({ method: "GET" }, options)
+    );
   }
 
   async post(endpoint, payload = {}) {
-    return this.genericFetch(endpoint, { method: 'POST', body: JSON.stringify(payload) });
+    return this.genericFetch(endpoint, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
   }
 
   async put(endpoint, payload = {}) {
-    return this.genericFetch(endpoint, { method: 'PUT', body: JSON.stringify(payload) });
+    return this.genericFetch(endpoint, {
+      method: "PUT",
+      body: JSON.stringify(payload)
+    });
   }
 
   async patch(endpoint, payload = {}) {
-    return this.genericFetch(endpoint, { method: 'PATCH', body: JSON.stringify(payload) });
+    return this.genericFetch(endpoint, {
+      method: "PATCH",
+      body: JSON.stringify(payload)
+    });
   }
 
   async genericFetch(endpoint, extendedOptions) {
     const { publicRuntimeConfig } = getConfig();
     const options = merge(
       {
+        // mode: "no-cors",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
+          Accept: "application/json",
+          "Content-Type": "application/json"
         }
       },
       extendedOptions
@@ -48,7 +61,7 @@ class GenericAPI {
 
     const responseJson = await response.json();
     results = !isOk && !responseJson.errorCode ? DEFAULT_ERROR : responseJson;
-    
+
     return results;
   }
 }

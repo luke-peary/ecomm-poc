@@ -1,34 +1,49 @@
-function cart(state = {}, action) {
+const initialState = {
+  loading: false,
+  cart: {},
+  error: null
+};
+
+function cart(state = initialState, action) {
   switch (action.type) {
-    case "ADD_TO_CART":
-      if (!state.hasOwnProperty(action.product.id)) {
-        return {
-          ...state,
-          [action.product.id]: {
-            ...action.product,
-            qty: 1
-          }
-        };
-      }
-      const newState = { ...state };
-      newState[action.product.id].qty++;
-
-      return newState;
-
-    case "REMOVE_FROM_CART":
-      if (state.hasOwnProperty(action.id)) {
-        const newState = { ...state };
-
-        if (state[action.id].qty > 1) {
-          newState[action.id].qty--;
-
-          return newState;
-        }
-        delete newState[action.id];
-
-        return newState;
-      }
-      return;
+    case "ADD_TO_CART_BEGIN":
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    case "ADD_TO_CART_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        cart: action.payload.cart
+      };
+    case "ADD_TO_CART_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        cart: {}
+      };
+    case "GET_CART_BEGIN":
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    case "GET_CART_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        cart: action.payload.cart
+      };
+    case "GET_CART_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        cart: {}
+      };
     default:
       return state;
   }

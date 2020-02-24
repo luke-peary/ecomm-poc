@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { Card, Typography } from "@material-ui/core";
+import { Card } from "@material-ui/core";
 import Add from "@material-ui/icons/Add";
 import Remove from "@material-ui/icons/Remove";
 import { toPrice } from "../helpers/functions";
 import { useDispatch } from "react-redux";
 import Link from "./Link";
+import Text from "./Text";
 
 const CartListItem = styled("li")`
   display: flex;
@@ -75,31 +76,24 @@ const CartList = ({ items }) => {
             </Link>
           </ItemImage>
           <ItemName>
-            <Typography variant="h6" component="span">
-              {item.name}
-            </Typography>
+            <Text as="span">{item.name}</Text>
           </ItemName>
           <ItemPrice>
-            <Typography variant="h6" component="span">
-              {toPrice(item.price)}
-            </Typography>
+            <Text as="span">{toPrice(item.price)}</Text>
           </ItemPrice>
           <ItemQty>
-            <Typography variant="h6" component="span">
-              {item.qty}
-            </Typography>
+            <Text as="span">{item.qty}</Text>
           </ItemQty>
           <ItemControls>
             <Remove
               onClick={() => removeFromCart(item.id)}
               style={{ marginRight: "24px" }}
+              fontSize="large"
             />
-            <Add onClick={() => addToCart(item)} />
+            <Add onClick={() => addToCart(item)} fontSize="large" />
           </ItemControls>
           <ItemTotal>
-            <Typography variant="h6" component="span">
-              {toPrice(item.price * item.qty)}
-            </Typography>
+            <Text as="span">{toPrice(item.price * item.qty)}</Text>
           </ItemTotal>
         </CartListItem>
       ))}

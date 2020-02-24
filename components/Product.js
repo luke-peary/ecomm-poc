@@ -1,9 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Typography, Button } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Link from "./Link";
 import styled from "styled-components";
 import Box from "./Box";
+import Button from "./Button";
+import { addToCart } from "../redux/actions/cart";
+import Heading from "./Heading";
+import Text from "./Text";
 import { toPrice } from "../helpers/functions";
 
 const Image = styled("img")`
@@ -14,8 +18,8 @@ const Product = ({ product }) => {
   const dispatch = useDispatch();
   const { id, name, image, price } = product;
 
-  const addToCart = () => {
-    dispatch({ type: "ADD_TO_CART", product });
+  const handleClick = () => {
+    dispatch(addToCart(id, 1));
   };
 
   return (
@@ -23,12 +27,16 @@ const Product = ({ product }) => {
       <Link href="/product/[id]" as={`/product/${id}`}>
         <Image src={image} />
       </Link>
-      <Box textAlign="center">
+      <Box textAlign="center" p={2}>
         <Link href="/product/[id]" as={`/product/${id}`}>
-          {name}
+          <Text as="h4" variant="large" bold>
+            {name}
+          </Text>
         </Link>
-        <Typography>{toPrice(price)}</Typography>
-        <Button onClick={addToCart}>Add to cart</Button>
+        <Text variant="large">{toPrice(price)}</Text>
+        <Button onClick={handleClick} variant="secondary" fullWidth>
+          Add to cart
+        </Button>
       </Box>
     </Box>
   );

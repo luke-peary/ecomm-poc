@@ -1,34 +1,34 @@
 import React from "react";
-import { Container, Typography, Grid, IconButton } from "@material-ui/core";
+import styled from "styled-components";
+import { Container, Grid, IconButton } from "@material-ui/core";
 import Link from "./Link";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import { styled } from "@material-ui/core/styles";
 import Box from "./Box";
-import { borderRight } from "@material-ui/system";
+import Text from "./Text";
 
-const Logo = styled("div")({
-  color: "white",
-  fontWeight: "bold",
-  fontSize: "32px",
-  "&:hover": {
-    textDecoration: "none"
+const Logo = styled.div`
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
+  &:hover {
+    text-decoration: none;
   }
-});
+`;
 
-const Cart = styled("div")({
-  color: "white",
-  textAlign: "right"
-});
+const Cart = styled.div`
+  color: white;
+  text-align: right;
+`;
 
-const Nav = styled("ul")({
-  listStyle: "none",
-  padding: 0
-});
+const Nav = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
 
-const NavItem = styled("li")({
-  color: "white",
-  display: "inline-block"
-});
+const NavItem = styled.li`
+  color: white;
+  display: inline-block;
+`;
 
 const Header = () => {
   return (
@@ -43,14 +43,16 @@ const Header = () => {
           <Grid item xs={8}>
             <Nav>
               <NavItem>
-                <Link href="/listing">PRODUCTS</Link>
+                <Link href="/listing">
+                  <Text variant="large">PRODUCTS</Text>
+                </Link>
               </NavItem>
             </Nav>
           </Grid>
           <Grid item xs={2}>
             <Cart>
               <Link href="/checkout/cart">
-                <ShoppingCartOutlinedIcon />
+                <ShoppingCartOutlinedIcon fontSize="large" />
               </Link>
             </Cart>
           </Grid>

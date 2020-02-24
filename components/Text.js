@@ -9,23 +9,23 @@ const Text = styled.span`
     switch (props.variant) {
       case "small":
         return css`
-          font-size: 15px;
-          line-height: 20px;
+          font-size: 1.5rem;
+          line-height: 2rem;
         `;
       case "medium":
         return css`
-          font-size: 17px;
-          line-height: 24px;
+          font-size: 1.7rem;
+          line-height: 2.4rem;
         `;
       case "large":
         return css`
-          font-size: 19px;
-          line-height: 28px;
+          font-size: 1.9rem;
+          line-height: 2.8rem;
         `;
       default:
         return css`
-          font-size: 17px;
-          line-height: 24px;
+          font-size: 1.7rem;
+          line-height: 2.4rem;
         `;
     }
   }};

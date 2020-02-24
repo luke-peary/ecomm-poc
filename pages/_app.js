@@ -5,6 +5,7 @@ import Head from "next/head";
 import { Provider } from "react-redux";
 import configureStore from "../redux/store";
 import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../components/GlobalStyles";
 import NoSsr from "@material-ui/core/NoSsr";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
@@ -40,6 +41,7 @@ class MyApp extends App {
               <PersistGate loading={null} persistor={persistor}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
+                <GlobalStyles />
                 <Component {...pageProps} />
               </PersistGate>
             </Provider>

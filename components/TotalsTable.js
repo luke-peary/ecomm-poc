@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Card } from "@material-ui/core";
+import Text from "./Text";
 import { toPrice } from "../helpers/functions";
 
 const TotalsCard = styled(Card)`
   padding: 24px;
+  margin-bottom: 16px;
 `;
 
 const TotalsRow = styled("div")`
@@ -26,20 +28,36 @@ const TotalsTable = ({ totals }) => {
   return (
     <TotalsCard>
       <TotalsRow>
-        <TotalsLabel>Sub total</TotalsLabel>
-        <TotalsValue>{toPrice(subTotal)}</TotalsValue>
+        <TotalsLabel>
+          <Text>Sub total</Text>{" "}
+        </TotalsLabel>
+        <TotalsValue>
+          <Text>{toPrice(subTotal)}</Text>
+        </TotalsValue>
       </TotalsRow>
       <TotalsRow>
-        <TotalsLabel>Taxes</TotalsLabel>
-        <TotalsValue>{toPrice(tax)}</TotalsValue>
+        <TotalsLabel>
+          <Text>Taxes</Text>
+        </TotalsLabel>
+        <TotalsValue>
+          <Text>{toPrice(tax)}</Text>
+        </TotalsValue>
       </TotalsRow>
       <TotalsRow>
-        <TotalsLabel>Shipping</TotalsLabel>
-        <TotalsValue>{toPrice(shipping)}</TotalsValue>
+        <TotalsLabel>
+          <Text>Shipping</Text>
+        </TotalsLabel>
+        <TotalsValue>
+          <Text>{toPrice(shipping)}</Text>
+        </TotalsValue>
       </TotalsRow>
       <TotalsRow>
-        <TotalsLabel>Total</TotalsLabel>
-        <TotalsValue>{toPrice(total)}</TotalsValue>
+        <TotalsLabel>
+          <Text>Total</Text>
+        </TotalsLabel>
+        <TotalsValue>
+          <Text>{toPrice(total)}</Text>
+        </TotalsValue>
       </TotalsRow>
     </TotalsCard>
   );

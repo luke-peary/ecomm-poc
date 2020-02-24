@@ -23,14 +23,6 @@ const ProductPage = props => {
   if (loading) return <CircularProgress />;
   if (!product) return null;
 
-  const addToCart = () => {
-    dispatch({ type: "ADD_TO_CART", product });
-  };
-
-  const removeFromCart = () => {
-    dispatch({ type: "REMOVE_FROM_CART", id });
-  };
-
   return (
     <FullWidth>
       <Container fixed>
