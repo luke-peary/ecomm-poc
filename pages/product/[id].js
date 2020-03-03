@@ -12,6 +12,10 @@ const Image = styled("img")`
   width: 100%;
 `;
 
+const StyledContainer = styled(Container)`
+  margin-top: 4rem;
+`;
+
 const ProductPage = props => {
   const router = useRouter();
   const { product, error, loading, dispatch } = props;
@@ -25,7 +29,7 @@ const ProductPage = props => {
 
   return (
     <FullWidth>
-      <Container fixed>
+      <StyledContainer fixed>
         <Grid container spacing={5}>
           <Grid item xs={12} md={5}>
             <Box bgcolor="white" boxShadow="md" borderRadius="borderRadius.md">
@@ -36,7 +40,7 @@ const ProductPage = props => {
             <ProductInfo product={product} />
           </Grid>
         </Grid>
-      </Container>
+      </StyledContainer>
     </FullWidth>
   );
 };

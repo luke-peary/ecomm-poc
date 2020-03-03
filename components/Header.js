@@ -44,7 +44,7 @@ const Header = () => {
             <Nav>
               <NavItem>
                 <Link href="/listing">
-                  <Text variant="large">PRODUCTS</Text>
+                  <Text variant="medium">PRODUCTS</Text>
                 </Link>
               </NavItem>
             </Nav>
@@ -52,7 +52,7 @@ const Header = () => {
           <Grid item xs={2}>
             <Cart>
               <Link href="/checkout/cart">
-                <ShoppingCartOutlinedIcon fontSize="large" />
+                <ShoppingCartOutlinedIcon style={{ fontSize: 24 }} />
               </Link>
             </Cart>
           </Grid>

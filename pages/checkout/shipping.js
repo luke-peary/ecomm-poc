@@ -3,12 +3,15 @@ import FullWidth from "../../layouts/fullWidth";
 import {
   Container,
   Typography,
-  Button,
-  TextField,
+  Grid,
+  // TextField,
   makeStyles
 } from "@material-ui/core";
 import FormCard from "../../components/FormCard";
-import Link from "../../src/Link";
+import Button, { ButtonControl } from "../../components/Button";
+import TextField from "../../components/TextField";
+import FormRow from "../../components/FormRow";
+import Heading from "../../components/Heading";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +31,10 @@ export default function Shipping() {
   const classes = useStyles();
 
   const states = [
+    {
+      value: "",
+      label: ""
+    },
     {
       value: "NT",
       label: "NT"
@@ -62,65 +69,36 @@ export default function Shipping() {
     <FullWidth>
       <Container maxWidth="sm">
         <FormCard>
-          <Typography variant="h2" component="h1" gutterBottom>
+          <Heading variant="h2" as="h1">
             Shipping address
-          </Typography>
+          </Heading>
           <form noValidate autoComplete="off">
-            <TextField
-              fullWidth
-              margin="normal"
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              id="outlined-basic"
-              label="Address line 1"
-              variant="outlined"
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              id="outlined-basic"
-              label="Address line 1"
-              variant="outlined"
-            />
-            <div className={classes.row}>
-              <TextField
-                select
-                margin="normal"
-                label="State"
-                variant="outlined"
-                className={classes.textField}
-              >
-                {states.map(state => (
-                  <option key={state.value} value={state.value}>
-                    {state.label}
-                  </option>
-                ))}
-              </TextField>
-
-              <TextField
-                margin="normal"
-                id="outlined-basic"
-                label="Postcode"
-                variant="outlined"
-                className={classes.textField}
-              />
-            </div>
+            <FormRow>
+              <TextField type="text" label="Name" />
+            </FormRow>
+            <FormRow>
+              <TextField type="text" label="Address 1" />
+            </FormRow>
+            <FormRow>
+              <TextField type="text" label="Address 2" />
+            </FormRow>
+            <FormRow>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <TextField type="select" label="State" options={states} />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField type="text" label="Post Code" />
+                </Grid>
+              </Grid>
+            </FormRow>
           </form>
-          <Button
-            variant="contained"
-            color="primary.main"
-            component={Link}
-            naked
-            href="/checkout/payment"
-          >
+        </FormCard>
+        <ButtonControl alignment="right" hasTopSpace={true}>
+          <Button variant="primary" href="/checkout/payment">
             Go to payment page
           </Button>
-        </FormCard>
+        </ButtonControl>
       </Container>
     </FullWidth>
   );
