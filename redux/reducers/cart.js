@@ -16,7 +16,7 @@ function cart(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        cart: action.payload.cart
+        cart: action.payload
       };
     case "ADD_TO_CART_FAILURE":
       return {
@@ -35,7 +35,7 @@ function cart(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        cart: action.payload.cart
+        cart: action.payload
       };
     case "GET_CART_FAILURE":
       return {

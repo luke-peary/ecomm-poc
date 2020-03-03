@@ -8,11 +8,15 @@ import TotalsTable from "../../components/TotalsTable";
 import { getCart } from "../../redux/actions/cart";
 
 const Cart = ({ cart, dispatch }) => {
+  const total = cart && cart.cart && cart.cart.totalPrice && cart.cart.totalPrice.centAmount
+  const subtotal = total*0.9
+  const taxes = total - subtotal
+
   const CartTotals = {
-    subTotal: 200100,
-    total: 300010,
-    tax: 1000,
-    shipping: 3456
+    subTotal: subtotal,
+    total: total,
+    tax: taxes,
+    shipping: 0
   };
 
   useEffect(() => {
@@ -27,7 +31,7 @@ const Cart = ({ cart, dispatch }) => {
         </Typography>
         <Grid container direction="row" spacing={3}>
           <Grid item xs={12} md={9}>
-            {/* {!!Object.keys(cart).length && <CartList items={cart} />} */}
+            {!!cart && !!cart.cart && <CartList items={cart.cart.lineItems} />}
           </Grid>
           <Grid item xs={12} md={3}>
             <TotalsTable totals={CartTotals} />
@@ -42,7 +46,7 @@ const Cart = ({ cart, dispatch }) => {
 };
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart.cart
 });
 
 export default connect(mapStateToProps)(Cart);

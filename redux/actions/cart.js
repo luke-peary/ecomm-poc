@@ -8,7 +8,6 @@ export function addToCart(productId, quantity) {
       quantity
     })
       .then(res => {
-        console.log(res);
         dispatch(addToCartSuccess(res.cart));
         return res.cart;
       })
@@ -23,9 +22,8 @@ export function getCart() {
     dispatch(getCartBegin());
     CartServices.getCart()
       .then(res => {
-        console.log(res);
-        dispatch(getCartSuccess(res.cart));
-        return res.cart;
+        dispatch(getCartSuccess(res));
+        return res;
       })
       .catch(error => {
         dispatch(getCartFailure(error));

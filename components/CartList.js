@@ -72,17 +72,17 @@ const CartList = ({ items }) => {
         <CartListItem key={item.id}>
           <ItemImage>
             <Link href="/product/[id]" as={`/product/${item.id}`}>
-              <Image src={item.image} />
+              <Image src={item.variant.images[0].url} />
             </Link>
           </ItemImage>
           <ItemName>
-            <Text as="span">{item.name}</Text>
+            <Text as="span">{item.name.en}</Text>
           </ItemName>
           <ItemPrice>
-            <Text as="span">{toPrice(item.price)}</Text>
+            <Text as="span">{toPrice(item.price.value.centAmount)}</Text>
           </ItemPrice>
           <ItemQty>
-            <Text as="span">{item.qty}</Text>
+            <Text as="span">{item.quantity}</Text>
           </ItemQty>
           <ItemControls>
             <Remove
@@ -93,7 +93,7 @@ const CartList = ({ items }) => {
             <Add onClick={() => addToCart(item)} fontSize="large" />
           </ItemControls>
           <ItemTotal>
-            <Text as="span">{toPrice(item.price * item.qty)}</Text>
+            <Text as="span">{toPrice(item.totalPrice.centAmount)}</Text>
           </ItemTotal>
         </CartListItem>
       ))}
