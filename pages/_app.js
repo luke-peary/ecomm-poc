@@ -34,6 +34,7 @@ class MyApp extends App {
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width"
           />
+          <script src="https://cdn.optimizely.com/js/17707930245.js"></script>
         </Head>
         <NoSsr>
           <ThemeProvider theme={theme}>

@@ -35,12 +35,12 @@ const Header = () => {
     <Box py={2} px={4} bgcolor="neutral.800">
       <Container fixed>
         <Grid container direction="row" alignItems="center">
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <Link href="/">
-              <Logo>ORSUM</Logo>
+              <Logo>Flexy Commerce</Logo>
             </Link>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={5}>
             <Nav>
               <NavItem>
                 <Link href="/listing">
