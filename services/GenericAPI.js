@@ -9,6 +9,10 @@ const DEFAULT_ERROR = {
   errorDescription: "Something went wrong"
 };
 
+
+export const endpoint = "https://www.flexycommerce.com/bff";
+//export const endpoint = "http://localhost:8180";
+
 class GenericAPI {
   constructor(option = {}) {}
 

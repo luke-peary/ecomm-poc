@@ -1,6 +1,5 @@
 import GenericAPI from "./GenericAPI";
-
-const endpoint = "https://www.flexycommerce.com/bff";
+import {endpoint} from "./GenericAPI";
 
 class CartServices extends GenericAPI {
   async addToCart(payload) {

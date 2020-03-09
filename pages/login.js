@@ -1,5 +1,9 @@
+import React, { useState } from 'react';
+import { useRouter } from "next/router";
 import { Avatar, Box, Grid, Button, CssBaseline, FormControlLabel, Checkbox, Container, Link, Typography, TextField } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import { connect } from "react-redux";
+import { signin } from "../redux/actions/authentication";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FullWidth from "../layouts/fullWidth";
 
@@ -35,9 +39,21 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(3, 0, 2),
     },
   }));
-
+  
 const Login = props => {
-    const classes = useStyles();
+  const { loadingDone, dispatch } = props;
+  const router = useRouter();
+  const classes = useStyles();
+  const [emailValue, setEmailValue] = useState();
+  const [passwordValue, setPasswordValue] = useState();
+  
+  console.log(loadingDone)
+  if (loadingDone) {
+    router.push('/')
+  }
+  const handleSubmitLogin = () => {
+    dispatch(signin(emailValue, passwordValue));
+  };
 
   return (
     <FullWidth>
@@ -52,6 +68,7 @@ const Login = props => {
                 </Typography>
                 <form className={classes.form} noValidate>
                 <TextField
+                    onChange={e => setEmailValue(e.target.value)}
                     variant="outlined"
                     margin="normal"
                     required
@@ -63,6 +80,7 @@ const Login = props => {
                     autoFocus
                 />
                 <TextField
+                    onChange={e => setPasswordValue(e.target.value)}
                     variant="outlined"
                     margin="normal"
                     required
@@ -78,7 +96,7 @@ const Login = props => {
                     label="Remember me"
                 />
                 <Button
-                    type="submit"
+                    onClick={handleSubmitLogin}
                     fullWidth
                     variant="contained"
                     color="primary"
@@ -108,4 +126,8 @@ const Login = props => {
   );
 };
 
-export default Login;
+const mapStateToProps = state => ({
+  loadingDone: state.authentication.loadingDone
+});
+
+export default connect(mapStateToProps)(Login);
